@@ -1,15 +1,22 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+/* =================================
+   DIEXVIL - RED NEON THEME
+================================= */
+
 :root {
-    --bg: #070b09;
-    --card: #101813;
-    --green: #00ff99;
-    --green-dark: #00b86b;
-    --white: #f5fff9;
-    --gray: #9aaba1;
-    --border: rgba(0, 255, 153, 0.16);
+    --bg: #080303;
+    --card: #160909;
+    --red: #ff2020;
+    --red-dark: #a80000;
+    --red-light: #ff5555;
+    --white: #ffffff;
+    --gray: #b5a1a1;
+    --border: rgba(255, 20, 20, 0.20);
 }
+
+/* RESET */
 
 * {
     margin: 0;
@@ -25,7 +32,7 @@ body {
     overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* NAVIGATION */
 
 .navbar {
     position: sticky;
@@ -35,7 +42,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 22px 9%;
-    background: rgba(7, 11, 9, 0.85);
+    background: rgba(8, 3, 3, 0.90);
     backdrop-filter: blur(18px);
     border-bottom: 1px solid var(--border);
 }
@@ -50,7 +57,8 @@ body {
 
 .logo span,
 footer span {
-    color: var(--green);
+    color: var(--red);
+    text-shadow: 0 0 15px rgba(255, 20, 20, 0.5);
 }
 
 .nav-links {
@@ -65,11 +73,13 @@ footer span {
     transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: var(--green);
+.nav-links a:hover,
+.nav-links a.active-link {
+    color: var(--red);
+    text-shadow: 0 0 12px var(--red);
 }
 
-/* HERO */
+/* HERO SECTION */
 
 .hero {
     min-height: 90vh;
@@ -78,13 +88,17 @@ footer span {
     justify-content: space-between;
     align-items: center;
     gap: 50px;
+
     background:
-        radial-gradient(ellipse at 80% 40%,
-        rgba(0, 255, 153, 0.10), transparent 45%);
+        radial-gradient(
+            ellipse at 80% 40%,
+            rgba(255, 0, 0, 0.15),
+            transparent 45%
+        );
 }
 
 .tag {
-    color: var(--green);
+    color: var(--red);
     font-size: 12px;
     letter-spacing: 4px;
     font-weight: 700;
@@ -99,14 +113,15 @@ footer span {
 }
 
 .hero h1 span {
-    color: var(--green);
-    text-shadow: 0 0 30px rgba(0, 255, 153, 0.35);
+    color: var(--red);
+    text-shadow: 0 0 30px rgba(255, 0, 0, 0.45);
 }
 
 .hero h2 {
-    color: #d5e5dc;
+    color: #f0dada;
     margin: 20px 0;
     font-size: 23px;
+    min-height: 35px;
 }
 
 .description {
@@ -136,31 +151,57 @@ footer span {
 }
 
 .primary {
-    color: #001b10;
-    background: var(--green);
+    color: white;
+    background: linear-gradient(135deg, #ff3333, #a80000);
+    box-shadow: 0 0 18px rgba(255, 0, 0, 0.2);
 }
 
 .secondary {
-    color: var(--green);
-    border: 1px solid var(--green);
+    color: var(--red);
+    border: 1px solid var(--red);
+    background: rgba(255, 0, 0, 0.04);
 }
 
 .btn:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(0, 255, 153, 0.3);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
 }
 
 /* PROFILE CARD */
 
 .hero-card {
+    position: relative;
+    overflow: hidden;
     width: 320px;
     padding: 40px 30px;
     text-align: center;
-    background: linear-gradient(145deg, #15231a, #0c120e);
+
+    background: linear-gradient(
+        145deg,
+        #271010,
+        #100505
+    );
+
     border: 1px solid var(--border);
     border-radius: 22px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+
+    box-shadow: 0 20px 60px rgba(255, 0, 0, 0.12);
+
     animation: floating 4s ease-in-out infinite;
+}
+
+.hero-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(
+        circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 0, 0, 0.18),
+        transparent 80%
+    );
+
+    pointer-events: none;
 }
 
 .circle {
@@ -168,13 +209,21 @@ footer span {
     height: 150px;
     margin: 0 auto 25px;
     border-radius: 50%;
+
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, #00ff99, #008f61);
-    color: #001b10;
+
+    background: linear-gradient(
+        135deg,
+        #ff3333,
+        #990000
+    );
+
+    color: white;
     font-size: 50px;
     font-weight: 700;
-    box-shadow: 0 0 45px rgba(0, 255, 153, 0.25);
+
+    box-shadow: 0 0 45px rgba(255, 0, 0, 0.4);
 }
 
 .hero-card h2 {
@@ -192,7 +241,7 @@ footer span {
 .status {
     margin-top: 25px;
     font-size: 12px;
-    color: var(--green);
+    color: #ff4545;
 }
 
 /* FLOAT ANIMATION */
@@ -201,6 +250,7 @@ footer span {
     0%, 100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-15px);
     }
@@ -219,13 +269,13 @@ section h2 {
 }
 
 section h2 span {
-    color: var(--green);
+    color: var(--red);
 }
 
-/* ABOUT */
+/* ABOUT SECTION */
 
 .about {
-    background: #0b100d;
+    background: #100606;
 }
 
 .about > p:last-child,
@@ -236,7 +286,7 @@ section h2 span {
     line-height: 2;
 }
 
-/* SKILLS */
+/* SKILLS SECTION */
 
 .skill-grid {
     display: grid;
@@ -247,9 +297,11 @@ section h2 span {
 
 .skill {
     padding: 30px 15px;
+
     background: var(--card);
-    border: 1px solid #1d3024;
+    border: 1px solid #351414;
     border-radius: 13px;
+
     font-size: 19px;
     font-weight: 700;
     transition: 0.3s;
@@ -257,9 +309,10 @@ section h2 span {
 
 .skill:hover {
     transform: translateY(-8px);
-    border-color: var(--green);
-    background: #13241a;
-    box-shadow: 0 0 25px rgba(0, 255, 153, 0.10);
+    border-color: var(--red);
+    background: #251010;
+
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.18);
 }
 
 .skill small {
@@ -270,7 +323,7 @@ section h2 span {
     margin-top: 12px;
 }
 
-/* PROJECTS */
+/* PROJECT SECTION */
 
 .project-grid {
     display: grid;
@@ -282,20 +335,23 @@ section h2 span {
 .project-card {
     padding: 32px;
     text-align: left;
+
     background: var(--card);
-    border: 1px solid #1d3024;
+    border: 1px solid #351414;
     border-radius: 15px;
+
     transition: 0.3s;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    border-color: var(--green);
-    box-shadow: 0 15px 40px rgba(0, 255, 153, 0.08);
+    border-color: var(--red);
+
+    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.12);
 }
 
 .project-card h3 {
-    color: var(--green);
+    color: var(--red);
     margin-bottom: 20px;
 }
 
@@ -307,7 +363,7 @@ section h2 span {
 }
 
 .project-card a {
-    color: var(--green);
+    color: var(--red-light);
     text-decoration: none;
     font-size: 13px;
     font-weight: 700;
@@ -315,14 +371,18 @@ section h2 span {
 
 .project-card a:hover {
     text-decoration: underline;
+    text-shadow: 0 0 12px var(--red);
 }
 
-/* CONTACT */
+/* CONTACT SECTION */
 
 .contact {
     background:
-        radial-gradient(circle,
-        rgba(0, 255, 153, 0.08), transparent 65%);
+        radial-gradient(
+            circle,
+            rgba(255, 0, 0, 0.12),
+            transparent 65%
+        );
 }
 
 .contact .btn {
@@ -334,7 +394,8 @@ section h2 span {
 footer {
     text-align: center;
     padding: 45px 20px;
-    background: #090e0b;
+
+    background: #100505;
     border-top: 1px solid var(--border);
 }
 
@@ -356,17 +417,41 @@ footer p {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg);
+    background: #080303;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--green-dark);
+    background: linear-gradient(
+        #ff3333,
+        #990000
+    );
     border-radius: 10px;
+}
+
+/* TEXT SELECTION */
+
+::selection {
+    background: var(--red);
+    color: white;
+}
+
+/* SCROLL REVEAL */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* RESPONSIVE DESIGN */
 
 @media (max-width: 850px) {
+
     .hero {
         flex-direction: column;
         text-align: center;
@@ -390,6 +475,7 @@ footer p {
 }
 
 @media (max-width: 550px) {
+
     .navbar {
         flex-direction: column;
         gap: 20px;
@@ -431,4 +517,10 @@ footer p {
         padding: 22px 8px;
         font-size: 15px;
     }
+
+    .project-card {
+        padding: 25px;
+    }
 }
+
+/* RED NEON FINISH */
